@@ -4,8 +4,8 @@ import PriceRange from './PriceRange'
 import Category from './Category'
 import Products from './Products'
 import { useState, useEffect } from 'react'
-import Footer from './Footer'
 import ShoppingCart from './ShoppingCart'
+import './header.css'
 
 const CATEGORIES_URL = "https://fakestoreapi.com/products/categories/"
 const API_URL = "https://fakestoreapi.com/products"
@@ -13,18 +13,27 @@ const API_URL = "https://fakestoreapi.com/products"
 const Header = () => {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
-  const [minPrice, setMinPrice] = useState(0)
+  const [maxPrice, setMaxPrice] = useState(0)
+  const [priceFilter, setPriceFilter] = useState([])
+  const [ productsInCart, setProductsInCart] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
+
+//Fetch
 
   useEffect(() => {
     doFetch(CATEGORIES_URL, setCategories)
     doFetch(API_URL, setProducts)
+    setIsLoading(true)
   }, []);
 
   const doFetch = async (URL, setter) => {
     const resp = await fetch(`${URL}`);
     const data = await resp.json();
     setter(data)
+    setIsLoading(false)
   }
+
+ //Filter By Category
 
   const filterByCategory = (category) => {
     if (category === 'all') {
@@ -36,38 +45,42 @@ const Header = () => {
     }
   }
 
-  let filteredProducts = []
+  //Filter By Price
 
-  const filterByPrice = (minPrice) => {
-    setMinPrice(minPrice)
-    products.map(product => {
-      if ( product.price < minPrice ) {
-        filteredProducts.push(product)
-        setProducts(filteredProducts)
-        
-      }
-      
-    })
+  const filterByPrice = (maxPrice) => {
+    setMaxPrice(maxPrice)
 
+    let filteredProducts = products.filter(product => product.price < maxPrice )
+    setPriceFilter(filteredProducts)
 
   }
 
-  const [ productsInCart, setProductsInCart] = useState([])
+  //Shopping Cart
 
   const addProductToCart = (product) => {
-    
-    setProductsInCart(product)
-    console.log(productsInCart)
+    setProductsInCart( Array.from(new Set ([...productsInCart, product])))
   };
+
+  
+  
 
   return (
     <header>
 
-      <h1 className='mt-3'>Shopping Cart</h1>
-      <ShoppingCart />
-      <PriceRange filterByPrice={filterByPrice} minPrice={minPrice} />
-      <Category categories={categories} filterByCategory={filterByCategory} />
-      <Products products={products} addProductToCart={addProductToCart}/>
+      <h1 className='m-3'>Best Seller Products</h1>
+      <span className='mt-4 d-flex justify-content-around  align-items-center'>
+        <PriceRange filterByPrice={filterByPrice} maxPrice={maxPrice} />
+        <Category categories={categories} filterByCategory={filterByCategory} />
+        <ShoppingCart productsInCart={productsInCart} setProductsInCart={setProductsInCart}/>
+
+      </span>
+      {isLoading && <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
+        {!isLoading && (
+          <>
+            <Products products={priceFilter.length > 0  ? priceFilter : products} addProductToCart={addProductToCart}/>
+            
+          </>
+        )}
       
     </header>
   )

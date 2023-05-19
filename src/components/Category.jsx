@@ -8,14 +8,15 @@ const Category = ({categories, filterByCategory}) => {
     }
 
     return (
-        <div className=" w-25">
-            <label  className="form-label">Category</label>
+        <div className=" w-25 d-flex justify-content-center">
+            <label  className="form-label me-3">Category: </label>
             <select id="select" className="form-select" onChange={handleCategory}>
                 <option value='all' >All</option>
                 {
                 categories.map(cat => <option key={cat} value={cat}>{cat} </option> )
                 }
             </select>
+            
         </div>
     )
 }

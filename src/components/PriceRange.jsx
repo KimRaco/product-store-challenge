@@ -4,11 +4,12 @@ import { useState } from 'react'
 //import { useFilters } from '../hooks/useFilters.js'
 
 
-const Filters = ({filterByPrice, minPrice}) => {
+const Filters = ({filterByPrice, maxPrice}) => {
 
     
   
-    const handleChangeMinPrice = (e) => {
+    const handleChangeMaxPrice = (e) => {
+     
         filterByPrice(e.target.value)
     }
 
@@ -24,9 +25,9 @@ const Filters = ({filterByPrice, minPrice}) => {
             type='range'
             min='0'
             max='1000'
-            onChange={handleChangeMinPrice}
+            onChange={handleChangeMaxPrice}
           />
-            <span>${minPrice}</span>
+            <span>${maxPrice}</span>
         </div>
   
       </section>

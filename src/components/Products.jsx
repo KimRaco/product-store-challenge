@@ -22,7 +22,9 @@ const Products = ({products, addProductToCart}) => {
                                         <h5 className="card-title">{product.title}</h5>
                                         <p>${product.price}</p>
                                         <button className='mt-4 btn btn-warning'
-                                        onClick={addProductToCart(product)} >
+                                        onClick={() => {
+                                            addProductToCart(product)
+                                        }} >
                                             <AddToCartIcon />
                                         </button>
                                     </div>

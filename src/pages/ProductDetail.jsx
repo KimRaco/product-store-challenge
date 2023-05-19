@@ -9,7 +9,7 @@ const API_URL = 'https://fakestoreapi.com/products'
 
 const ProductDetail = () => {
 
-    const [ product, setProduct ] = useState([])
+    const [product, setProduct] = useState([])
 
     const { productId } = useParams()
 
@@ -25,29 +25,28 @@ const ProductDetail = () => {
 
     return (
         <>
-            
 
-                <div className="d-flex container ">
+                <div className='row d-flex justify-content-around m-3'>
 
-                    <div className='row justify-content-center'>
 
-                        <div className="card col-8 m-3 ">
-                            <img src={product?.image} />
-                            <h3>{product?.title}
-                            </h3>
-                            <p>{product?.description}</p>
-      
-                           <Link to={'/'} >
-                            <button className="btn btn-info">Go back</button>
-                           </Link>
+                    <img className='col-sm-12 col-md-4 ' src={product?.image} />
 
-                        </div>
+
+                    <div className=" col-sm-12 col-md-6 text-start">
+                        <h2>{product?.title}
+                        </h2>
+                        <h4>${product.price}</h4>
+                        <p>{product?.description}</p>
+
+                        <Link to={'/'} >
+                            <button className="btn btn-info">Buy</button>
+                        </Link>
 
                     </div>
 
                 </div>
 
-            
+        
 
         </>
 
