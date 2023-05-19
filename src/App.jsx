@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Card from './components/Card'
 import CategorySection from './components/CategorySection'
+import Login from "./pages/login/login"
 function App() {
 
 
@@ -19,6 +20,7 @@ function App() {
 
         <Route path='/' element={<><Header /></>} />
         <Route path='/:productId' element={<ProductDetail />} />
+        <Route path='/login' element={<Login/>}/>
       </Routes>
       <Footer />
 

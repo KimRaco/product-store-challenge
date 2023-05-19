@@ -1,0 +1,25 @@
+.login-container{
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+
+
+    .login-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+
+        width: 50%;
+        height: 30rem;
+        border: 1px solid black;
+        border-radius: 20px;
+
+        input{
+            border: 1px solid rgb(141, 141, 141);
+            padding: .5em;
+        }
+
+    }
+}
