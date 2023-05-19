@@ -45,9 +45,9 @@ const ShoppingCart = ({productsInCart, setProductsInCart}) => {
                     {
                         productsInCart.map(p =>
                             <React.Fragment key={p.id}>
-                                <div className="card mb-3" >
-                                    <div className="row g-0">
-                                        <div className="col-md-4">
+                                <div className="card mb-3 " >
+                                    <div className="row g-0 d-flex align-items-center">
+                                        <div className="col-md-4 p-2">
                                             <img src={p.image} className="img-fluid rounded-start" alt="..." />
                                         </div>
                                         <div className="col-md-8">
