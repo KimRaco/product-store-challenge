@@ -9,8 +9,25 @@ const ShoppingCart = ({productsInCart, setProductsInCart}) => {
     const removeFromCart = (e) => {
         const newProductsInCart = productsInCart.filter(p => p.id !== e.id)
         setProductsInCart(newProductsInCart)
+        
     }
 
+    //total
+
+    let prices = []
+
+    productsInCart.map( p => {
+        prices.push(p.price)
+        
+    })
+
+    const getTotal = prices => {
+        return prices.reduce((acum, current) => acum + current, 0)
+        
+    }
+
+    let total = Math.round(getTotal(prices))
+    
 
     return (
         <>
@@ -36,7 +53,7 @@ const ShoppingCart = ({productsInCart, setProductsInCart}) => {
                                         <div className="col-md-8">
                                             <div className="card-body">
                                                 <h5 className="card-title">{p.title}</h5>
-                                                <p className="card-text"><small className="text-body-secondary">{p.price}</small></p>
+                                                <p className="card-text"><small className="text-body-secondary">${p.price}</small></p>
                                                 <button className="btn btn-danger" onClick={() => removeFromCart(p)}> <RemoveFromCartIcon /></button>
                                             </div>
                                         </div>
@@ -47,8 +64,16 @@ const ShoppingCart = ({productsInCart, setProductsInCart}) => {
                         )
                     }
 
-
                 </div>
+                <div className='d-flex justify-content-around p-3'>
+
+                    <h5>Total to pay: </h5>
+                    <p>${total}</p>
+                </div>
+                    
+                    
+                    
+
             </div>
         </>
     )

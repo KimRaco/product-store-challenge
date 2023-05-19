@@ -33,7 +33,7 @@ const categoryList = [{
 
 const CategorySection = () => {
   return (
-    <div className='container'>
+    <div className='container mt-4'>
         <div className='row'>{categoryList.map(category=>{
             return (<Card key={category.path} category={category.category} img={category.img} color={category.color}/>)
         })}

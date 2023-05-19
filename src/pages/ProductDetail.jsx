@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+
 
 
 const API_URL = 'https://fakestoreapi.com/products'
@@ -17,7 +17,6 @@ const ProductDetail = () => {
         fetch(`${API_URL}/${productId}`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 setProduct(data)
 
             });

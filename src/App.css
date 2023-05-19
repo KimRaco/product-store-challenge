@@ -9,3 +9,16 @@
 body {
   background-color: rgb(242, 242, 242);
 }
+
+.btn {
+  
+  cursor: pointer;
+  outline: none;
+  
+}
+
+
+.btn:active {
+  
+  transform: translateY(4px);
+}
