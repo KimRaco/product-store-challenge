@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { CartIcon } from './icons'
 
 
 const Navbar = () => {
@@ -12,22 +13,43 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Contact</a>
+                                <a className="nav-link" href="#">Shop</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">About Us</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Blog</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Contact Us</a>
                             </li>
                         </ul>
-                        
+                        <ul className="navbar-nav justify-content-end">
+                            
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Log in</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#"><i className="fa-solid fa-magnifying-glass"></i></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#"><CartIcon/></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-
+                
             </nav>
 
-
+        
 
         </>
     )
