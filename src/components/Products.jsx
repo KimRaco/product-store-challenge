@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
 import { AddToCartIcon } from './icons';
 import './products.css'
 import { Link } from 'react-router-dom';

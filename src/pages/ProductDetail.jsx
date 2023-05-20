@@ -10,24 +10,28 @@ const API_URL = 'https://fakestoreapi.com/products'
 const ProductDetail = () => {
 
     const [product, setProduct] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
 
     const { productId } = useParams()
 
     useEffect(() => {
+        setIsLoading(true)
         fetch(`${API_URL}/${productId}`)
             .then((response) => response.json())
             .then((data) => {
                 setProduct(data)
-
+                setIsLoading(false)
             });
     }, []);
 
     return (
         <>
 
-                <div className='row d-flex justify-content-around m-3'>
+            <div className='row d-flex justify-content-around m-3'>
 
-
+                {isLoading && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
+                {!isLoading && (
+                   <>
                     <img className='col-sm-12 col-md-4 ' src={product?.image} />
 
 
@@ -42,10 +46,13 @@ const ProductDetail = () => {
                         </Link>
 
                     </div>
+                   
+                   </>
+                )}
 
-                </div>
+            </div>
 
-        
+
 
         </>
 
